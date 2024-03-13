@@ -1,0 +1,9 @@
+{
+  "shop" : {
+    "weightUnit": "lb"
+  },
+  "system": {
+    "theme": "usashipping",
+    "weightUnit": "lb"
+  }
+}

@@ -1,2 +1,24 @@
-# node_modules
-# .env
+.DS_Store
+
+npm-debug.log
+package-log.json
+.log
+*.log
+
+node_modules
+.env
+
+# build
+./dist
+.evershop
+
+# evershop folder
+#/extensions/*
+#themes
+#/media
+#/public
+#/config
+
+# IDE
+#.idea/*
+#.vscode

@@ -9,6 +9,6 @@
     "dev": "evershop dev"
   },
   "dependencies": {
-    "@evershop/evershop": "1.0.0"
+    "@evershop/evershop": "1.2.2"
   }
 }

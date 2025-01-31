@@ -8,7 +8,6 @@ import { Total } from '@components/frontStore/checkout/checkout/summary//cart/To
 import { Weight } from "./Weight";
 
 function CartSummary({
-  totalQty,
   subTotal,
   subTotalInclTax,
   grandTotal,
@@ -18,24 +17,21 @@ function CartSummary({
   shippingFeeInclTax,
   coupon,
   totalWeight,
-  displayCheckoutPriceIncludeTax
 }) {
   return (
     <div className="checkout-summary-block">
       <Subtotal
-        count={totalQty}
-        total={
-          displayCheckoutPriceIncludeTax ? subTotalInclTax.text : subTotal.text
-        }
+        count={0}
+        total={subTotal.text}
       />
       <Shipping method={shippingMethodName} cost={shippingFeeInclTax.text} />
-      {!displayCheckoutPriceIncludeTax && <Tax amount={taxAmount.text} />}
       <Discount code={coupon} discount={discountAmount.text} />
       {/* <Weight weight={totalWeight.text} /> */}
       <Total
         taxAmount={taxAmount.text}
         total={grandTotal.text}
-        displayCheckoutPriceIncludeTax={displayCheckoutPriceIncludeTax}
+        totalTaxAmount={0}
+        displayCheckoutPriceIncludeTax={false}
       />
     </div>
   );
@@ -65,8 +61,6 @@ CartSummary.propTypes = {
   totalWeight: PropTypes.shape({
     text: PropTypes.string.isRequired
   }),
-  totalQty: PropTypes.string,
-  displayCheckoutPriceIncludeTax: PropTypes.bool
 };
 
 CartSummary.defaultProps = {

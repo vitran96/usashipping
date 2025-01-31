@@ -8,8 +8,9 @@ import './Summary.scss';
 
 export default function Summary({
   cart,
-  setting: { displayCheckoutPriceIncludeTax }
 }) {
+  let displayCheckoutPriceIncludeTax = false;
+  // console.log(cart);
   return (
     <Area
       id="checkoutSummary"
@@ -45,10 +46,12 @@ Summary.propTypes = {
         }),
         subTotal: PropTypes.shape({
           text: PropTypes.string
+        }),
+        lineTotal: PropTypes.shape({
+          text: PropTypes.string
         })
       })
     ),
-    totalQty: PropTypes.number,
     subTotal: PropTypes.shape({
       text: PropTypes.string
     }),
@@ -73,9 +76,6 @@ Summary.propTypes = {
     shippingMethodName: PropTypes.string,
     coupon: PropTypes.string
   }).isRequired,
-  setting: PropTypes.shape({
-    displayCheckoutPriceIncludeTax: PropTypes.bool
-  }).isRequired
 };
 
 export const layout = {
@@ -131,10 +131,11 @@ export const query = `
           value
           text
         }
+        lineTotal {
+          value
+          text
+        }
       }
-    }
-    setting {
-      displayCheckoutPriceIncludeTax
     }
   }
 `;

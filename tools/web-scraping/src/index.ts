@@ -5,7 +5,7 @@
  */
 
 function main(): void {
-    console.log("Hello, World!");
+  console.log('Hello, World!');
 }
 
 // Execute the main function

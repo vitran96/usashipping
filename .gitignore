@@ -5,12 +5,12 @@ package-log.json
 .log
 *.log
 
-node_modules
+node_modules/
 .env
 
 # build
-./dist
-.evershop
+dist/
+.evershop/
 
 # evershop folder
 #/extensions/*

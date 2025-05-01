@@ -15,5 +15,14 @@
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "clear": "^0.1.0",
+    "clui": "^0.3.6",
+    "configstore": "^7.0.0",
+    "figlet": "^1.8.1",
+    "inquirer": "^12.6.0",
+    "minimist": "^1.2.8"
   }
 }

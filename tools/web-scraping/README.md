@@ -176,6 +176,99 @@ if (config.has('language')) {
 }
 ```
 
+### axios
+**Purpose**: Promise-based HTTP client for making requests.
+
+**Usage Example**:
+```typescript
+import axios from 'axios';
+
+// Making a GET request
+async function fetchData(url: string) {
+  try {
+    const response = await axios.get(url);
+    console.log('Status Code:', response.status);
+    console.log('Data:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
+}
+
+// Making a POST request
+async function postData(url: string, data: any) {
+  try {
+    const response = await axios.post(url, data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    console.log('Status:', response.status);
+    console.log('Response:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error posting data:', error);
+    throw error;
+  }
+}
+
+// Using axios with custom configuration
+const api = axios.create({
+  baseURL: 'https://api.example.com',
+  timeout: 5000,
+  headers: {
+    'Authorization': 'Bearer YOUR_TOKEN',
+    'Content-Type': 'application/json'
+  }
+});
+
+// Using the custom instance
+api.get('/endpoint').then(response => {
+  console.log(response.data);
+});
+```
+
+### node-html-parser
+**Purpose**: Fast HTML parser with a simple DOM API.
+
+**Usage Example**:
+```typescript
+import { parse } from 'node-html-parser';
+
+// Parse HTML from a string
+const html = '<div><h1>Title</h1><p>Paragraph</p></div>';
+const root = parse(html);
+
+// Query elements
+const h1 = root.querySelector('h1');
+console.log('H1 text:', h1?.text); // Output: Title
+
+// Find elements by tag name
+const paragraphs = root.querySelectorAll('p');
+paragraphs.forEach(p => {
+  console.log('Paragraph text:', p.text);
+});
+
+// Access attributes
+const div = root.querySelector('div');
+div?.setAttribute('class', 'container');
+console.log('Div HTML:', div?.toString());
+
+// Manipulate content
+if (h1) {
+  h1.set_content('New Title');
+  console.log('Updated H1:', h1.text); // Output: New Title
+}
+
+// Extract all links from a page
+const htmlWithLinks = '<a href="https://example.com">Example</a><a href="https://test.com">Test</a>';
+const rootWithLinks = parse(htmlWithLinks);
+const links = rootWithLinks.querySelectorAll('a');
+const urls = links.map(link => link.getAttribute('href'));
+console.log('URLs:', urls); // Output: ['https://example.com', 'https://test.com']
+```
+
 ## Combining Multiple Packages
 
 Here's an example that combines several packages:
@@ -225,4 +318,67 @@ async function main() {
 }
 
 main();
+```
+
+## Web Scraping Example
+
+Here's an example showing how to use axios and node-html-parser together for web scraping:
+
+```typescript
+import axios from 'axios';
+import { parse } from 'node-html-parser';
+import chalk from 'chalk';
+import { Spinner } from 'clui';
+import inquirer from 'inquirer';
+
+async function scrapeWebsite(url: string) {
+  // Create spinner for loading indication
+  const spinner = new Spinner(`Fetching data from ${url}...`);
+  spinner.start();
+  
+  try {
+    // Fetch HTML content from the URL
+    const response = await axios.get(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+      }
+    });
+    
+    spinner.stop();
+    console.log(chalk.green('✓') + ' Data fetched successfully!');
+    
+    // Parse the HTML
+    const root = parse(response.data);
+    
+    // Example: Extract all headlines from a news site
+    const headlines = root.querySelectorAll('h2.headline').map(el => el.text.trim());
+    
+    console.log(chalk.yellow('\nHeadlines found:'));
+    headlines.forEach((headline, index) => {
+      console.log(chalk.cyan(`${index + 1}. ${headline}`));
+    });
+    
+    // Ask user if they want to save the data
+    const { save } = await inquirer.prompt({
+      type: 'confirm',
+      name: 'save',
+      message: 'Do you want to save these headlines to a file?',
+      default: false
+    });
+    
+    if (save) {
+      // Here you could implement saving to a file
+      console.log(chalk.green('Headlines saved successfully!'));
+    }
+    
+    return headlines;
+  } catch (error) {
+    spinner.stop();
+    console.error(chalk.red('Error:'), error.message);
+    throw error;
+  }
+}
+
+// Usage example
+// scrapeWebsite('https://news-example.com');
 ```

@@ -1,6 +1,11 @@
 import React from "react";
 
-function Logo() {
+interface ComponentLayout {
+  areaId: string;
+  sortOrder: number;
+}
+
+const Logo: React.FC = () => {
   return (
     <div>
       <a href="/">
@@ -12,7 +17,7 @@ function Logo() {
 
 export default Logo;
 
-export const layout = {
+export const layout: ComponentLayout = {
   areaId: "header",
   sortOrder: 5,
 };

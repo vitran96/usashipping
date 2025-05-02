@@ -1,6 +1,11 @@
 import React from "react";
 
-function Newsletter() {
+interface ComponentLayout {
+  areaId: string;
+  sortOrder: number;
+}
+
+const Newsletter: React.FC = () => {
   return (
     <div className="mt-[50px]">
       <div className="page-width">
@@ -29,7 +34,7 @@ function Newsletter() {
 
 export default Newsletter;
 
-export const layout = {
+export const layout: ComponentLayout = {
   areaId: "content",
   sortOrder: 50,
 };

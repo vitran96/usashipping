@@ -1,7 +1,12 @@
 import React from 'react';
 import Button from '@components/frontStore/cms/Button';
 
-export default function FeaturedCategories() {
+interface ComponentLayout {
+  areaId: string;
+  sortOrder: number;
+}
+
+const FeaturedCategories: React.FC = () => {
   return (
     <div className="mt-15">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 page-width">
@@ -46,7 +51,9 @@ export default function FeaturedCategories() {
   );
 }
 
-export const layout = {
+export default FeaturedCategories;
+
+export const layout: ComponentLayout = {
   areaId: 'content',
   sortOrder: 10
 };

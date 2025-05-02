@@ -5,7 +5,12 @@ import "../../css/global.scss";
 import "./Layout.scss";
 import "./tailwind.scss";
 
-export default function Layout() {
+interface ComponentLayout {
+  areaId: string;
+  sortOrder: number;
+}
+
+const Layout: React.FC = () => {
   return (
     <>
       <LoadingBar />
@@ -122,7 +127,9 @@ export default function Layout() {
   );
 }
 
-export const layout = {
+export default Layout;
+
+export const layout: ComponentLayout = {
   areaId: "body",
   sortOrder: 1,
 };

@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 // import { _ } from '@evershop/evershop/src/lib/locale/translate';
 
-export function Weight({ weight }) {
+interface WeightProps {
+  weight: string;
+}
+
+export function Weight({ weight }: WeightProps) {
   return (
     <div className="summary-row">
       <span>Weight</span>
@@ -12,7 +15,3 @@ export function Weight({ weight }) {
     </div>
   );
 }
-
-Weight.propTypes = {
-  weight: PropTypes.string.isRequired
-};

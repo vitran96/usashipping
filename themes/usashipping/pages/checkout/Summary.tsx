@@ -1,16 +1,73 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Items } from '@components/frontStore/checkout/checkout/summary/Items';
-// import { CartSummary } from '@components/frontStore/checkout/checkout/summary/Cart';
 import { CartSummary } from '../../components/frontStore/checkout/checkout/summary/Cart';
 import Area from '@components/common/Area';
 import './Summary.scss';
 
-export default function Summary({
-  cart,
-}) {
+interface CartItem {
+  thumbnail: string;
+  productName: string;
+  productSku: string;
+  qty: number;
+  variantOptions: string;
+  total: {
+    value: number;
+    text: string;
+  };
+  subTotal: {
+    value: number;
+    text: string;
+  };
+  lineTotal: {
+    value: number;
+    text: string;
+  };
+}
+
+interface CartProps {
+  cart: {
+    totalQty?: number;
+    items: CartItem[];
+    subTotal: {
+      value: number;
+      text: string;
+    };
+    subTotalInclTax: {
+      value: number;
+      text: string;
+    };
+    grandTotal: {
+      value: number;
+      text: string;
+    };
+    discountAmount: {
+      value: number;
+      text: string;
+    };
+    taxAmount: {
+      value: number;
+      text: string;
+    };
+    totalWeight: {
+      value: number;
+      text: string;
+    };
+    shippingFeeInclTax: {
+      value: number;
+      text: string;
+    };
+    shippingMethodName: string;
+    coupon: string;
+  };
+}
+
+interface ComponentLayout {
+  areaId: string;
+  sortOrder: number;
+}
+
+const Summary: React.FC<CartProps> = ({ cart }) => {
   let displayCheckoutPriceIncludeTax = false;
-  // console.log(cart);
   return (
     <Area
       id="checkoutSummary"
@@ -33,52 +90,9 @@ export default function Summary({
   );
 }
 
-Summary.propTypes = {
-  cart: PropTypes.shape({
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        thumbnail: PropTypes.string,
-        productName: PropTypes.string,
-        variantOptions: PropTypes.string,
-        qty: PropTypes.number,
-        total: PropTypes.shape({
-          text: PropTypes.string
-        }),
-        subTotal: PropTypes.shape({
-          text: PropTypes.string
-        }),
-        lineTotal: PropTypes.shape({
-          text: PropTypes.string
-        })
-      })
-    ),
-    subTotal: PropTypes.shape({
-      text: PropTypes.string
-    }),
-    subTotalInclTax: PropTypes.shape({
-      text: PropTypes.string
-    }),
-    grandTotal: PropTypes.shape({
-      text: PropTypes.string
-    }),
-    discountAmount: PropTypes.shape({
-      text: PropTypes.string
-    }),
-    taxAmount: PropTypes.shape({
-      text: PropTypes.string
-    }),
-    totalWeight: PropTypes.shape({
-        text: PropTypes.string
-      }),
-    shippingFeeInclTax: PropTypes.shape({
-      text: PropTypes.string
-    }),
-    shippingMethodName: PropTypes.string,
-    coupon: PropTypes.string
-  }).isRequired,
-};
+export default Summary;
 
-export const layout = {
+export const layout: ComponentLayout = {
   areaId: 'checkoutPageRight',
   sortOrder: 10
 };

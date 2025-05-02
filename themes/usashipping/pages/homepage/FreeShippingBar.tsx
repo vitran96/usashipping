@@ -1,6 +1,11 @@
 import React from "react";
 
-function FreeShippingBar() {
+interface ComponentLayout {
+  areaId: string;
+  sortOrder: number;
+}
+
+const FreeShippingBar: React.FC = () => {
   return (
     <div className="page-width">
       <div className="grid grid-cols-1 md:grid-cols-3 md:divide-x border-divider border my-3">
@@ -23,7 +28,7 @@ function FreeShippingBar() {
 
 export default FreeShippingBar;
 
-export const layout = {
+export const layout: ComponentLayout = {
   areaId: "content",
   sortOrder: 2,
 };

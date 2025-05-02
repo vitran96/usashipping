@@ -5,10 +5,19 @@
   "scripts": {
     "setup": "evershop install",
     "start": "evershop start",
-    "build": "evershop build",
-    "dev": "evershop dev"
+    "build": "tsc && evershop build",
+    "dev": "concurrently \"tsc --watch\" \"evershop dev\"",
+    "dev:evershop": "evershop dev",
+    "dev:ts": "tsc --watch",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@evershop/evershop": "1.2.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "concurrently": "^9.1.2",
+    "typescript": "^5.0.0"
   }
 }

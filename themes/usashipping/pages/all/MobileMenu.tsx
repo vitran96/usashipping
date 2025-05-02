@@ -1,9 +1,24 @@
-import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import "./MobileMenu.scss";
 
-export default function MobileMenu({ menu: { items } }) {
-  const [show, setShow] = React.useState(false);
+interface MenuItem {
+  name: string;
+  url: string;
+}
+
+interface MobileMenuProps {
+  menu: {
+    items: MenuItem[];
+  };
+}
+
+interface ComponentLayout {
+  areaId: string;
+  sortOrder: number;
+}
+
+const MobileMenu: React.FC<MobileMenuProps> = ({ menu: { items } }) => {
+  const [show, setShow] = useState<boolean>(false);
 
   return (
     <div className="main-menu-mobile self-center">
@@ -31,7 +46,6 @@ export default function MobileMenu({ menu: { items } }) {
       {show && (
         <ul className="nav justify-content-center">
           {items.map((i, index) => (
-            // eslint-disable-next-line react/no-array-index-key
             <li className="nav-item" key={index}>
               <a className="nav-link" href={i.url}>
                 {i.name}
@@ -49,18 +63,9 @@ export default function MobileMenu({ menu: { items } }) {
   );
 }
 
-MobileMenu.propTypes = {
-  menu: PropTypes.shape({
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        url: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-  }).isRequired,
-};
+export default MobileMenu;
 
-export const layout = {
+export const layout: ComponentLayout = {
   areaId: "icon-wrapper",
   sortOrder: 50,
 };

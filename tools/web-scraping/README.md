@@ -1,6 +1,25 @@
-# CLI Application
+# Web scraping tool
 
-A command-line application built with Node.js and TypeScript.
+## Goal
+
+Srap USA supermarket catalog and save it to sqlite DB.
+
+List of supermarkets:
+* [Walmart](https://www.walmart.com/) - HIGHEST PRIORITY
+* [Target](https://www.target.com/) - HIGHEST PRIORITY
+* [Costco](https://www.costco.com/) - HIGHEST PRIORITY
+* [Whole Foods](https://www.wholefoodsmarket.com/)
+* [Trader Joe's](https://www.traderjoes.com/)
+* [Safeway](https://www.safeway.com/)
+* [Albertsons](https://www.albertsons.com/)
+* [Publix](https://www.publix.com/)
+* [Meijer](https://www.meijer.com/)
+* [H-E-B](https://www.heb.com/)
+* [Food Lion](https://www.foodlion.com/)
+* [ShopRite](https://www.shoprite.com/)
+* [Hy-Vee](https://www.hy-vee.com/)
+* [WinCo Foods](https://www.wincofoods.com/)
+* [ALDI](https://www.aldi.com/)
 
 ## Installation
 

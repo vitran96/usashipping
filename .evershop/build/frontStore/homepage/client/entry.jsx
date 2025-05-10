@@ -9,92 +9,92 @@ Area.defaultProps.components = {
     XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY2F0YWxvZ1xwYWdlc1xmcm9udFN0b3JlXGFsbFxTZWFyY2hCb3guanN4: {
       id: 'XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY2F0YWxvZ1xwYWdlc1xmcm9udFN0b3JlXGFsbFxTZWFyY2hCb3guanN4',
       sortOrder: 5,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\catalog\\pages\\frontStore\\all\\SearchBox.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\catalog\\pages\\frontStore\\all\\SearchBox.jsx')
     },
     XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY2hlY2tvdXRccGFnZXNcZnJvbnRTdG9yZVxhbGxcTWluaUNhcnQuanN4: {
       id: 'XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY2hlY2tvdXRccGFnZXNcZnJvbnRTdG9yZVxhbGxcTWluaUNhcnQuanN4',
       sortOrder: 10,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\checkout\\pages\\frontStore\\all\\MiniCart.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\checkout\\pages\\frontStore\\all\\MiniCart.jsx')
     },
-    'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xhbGxcTW9iaWxlTWVudS5qc3g=': {
-      id: 'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xhbGxcTW9iaWxlTWVudS5qc3g=',
+    XHRoZW1lc1xldmVccGFnZXNcYWxsXE1vYmlsZU1lbnUuanN4: {
+      id: 'XHRoZW1lc1xldmVccGFnZXNcYWxsXE1vYmlsZU1lbnUuanN4',
       sortOrder: 50,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\themes\\usashipping\\pages\\all\\MobileMenu.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\themes\\eve\\pages\\all\\MobileMenu.jsx')
     },
     XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY3VzdG9tZXJccGFnZXNcZnJvbnRTdG9yZVxhbGxcVXNlckljb24uanN4: {
       id: 'XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY3VzdG9tZXJccGFnZXNcZnJvbnRTdG9yZVxhbGxcVXNlckljb24uanN4',
       sortOrder: 30,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\customer\\pages\\frontStore\\all\\UserIcon.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\customer\\pages\\frontStore\\all\\UserIcon.jsx')
     }
   },
   content: {
-    XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xob21lcGFnZVxGZWF0dXJlZENhdGVnb3JpZXMuanN4: {
-      id: 'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xob21lcGFnZVxGZWF0dXJlZENhdGVnb3JpZXMuanN4',
-      sortOrder: 10,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\themes\\usashipping\\pages\\homepage\\FeaturedCategories.jsx')
+    'XHRoZW1lc1xldmVccGFnZXNcaG9tZXBhZ2VcRmVhdHVyZWRDYXRlZ29yaWVzLmpzeA==': {
+      id: 'XHRoZW1lc1xldmVccGFnZXNcaG9tZXBhZ2VcRmVhdHVyZWRDYXRlZ29yaWVzLmpzeA==',
+      sortOrder: 5,
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\themes\\eve\\pages\\homepage\\FeaturedCategories.jsx')
     },
-    'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xob21lcGFnZVxGZWF0dXJlZFByb2R1Y3RzLmpzeA==': {
-      id: 'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xob21lcGFnZVxGZWF0dXJlZFByb2R1Y3RzLmpzeA==',
+    'XHRoZW1lc1xldmVccGFnZXNcaG9tZXBhZ2VcRmVhdHVyZWRQcm9kdWN0cy5qc3g=': {
+      id: 'XHRoZW1lc1xldmVccGFnZXNcaG9tZXBhZ2VcRmVhdHVyZWRQcm9kdWN0cy5qc3g=',
       sortOrder: 15,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\themes\\usashipping\\pages\\homepage\\FeaturedProducts.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\themes\\eve\\pages\\homepage\\FeaturedProducts.jsx')
     },
     XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY21zXHBhZ2VzXGZyb250U3RvcmVcYWxsXEJyZWFkY3J1bWIuanN4: {
       id: 'XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY21zXHBhZ2VzXGZyb250U3RvcmVcYWxsXEJyZWFkY3J1bWIuanN4',
       sortOrder: 0,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\cms\\pages\\frontStore\\all\\Breadcrumb.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\cms\\pages\\frontStore\\all\\Breadcrumb.jsx')
     },
-    'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xob21lcGFnZVxNYWluQmFubmVyLmpzeA==': {
-      id: 'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xob21lcGFnZVxNYWluQmFubmVyLmpzeA==',
+    'XHRoZW1lc1xldmVccGFnZXNcaG9tZXBhZ2VcTWFpbkJhbm5lci5qc3g=': {
+      id: 'XHRoZW1lc1xldmVccGFnZXNcaG9tZXBhZ2VcTWFpbkJhbm5lci5qc3g=',
       sortOrder: 1,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\themes\\usashipping\\pages\\homepage\\MainBanner.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\themes\\eve\\pages\\homepage\\MainBanner.jsx')
     },
-    'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xhbGxcTmV3c2xldHRlci5qc3g=': {
-      id: 'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xhbGxcTmV3c2xldHRlci5qc3g=',
+    XHRoZW1lc1xldmVccGFnZXNcYWxsXE5ld3NsZXR0ZXIuanN4: {
+      id: 'XHRoZW1lc1xldmVccGFnZXNcYWxsXE5ld3NsZXR0ZXIuanN4',
       sortOrder: 50,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\themes\\usashipping\\pages\\all\\Newsletter.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\themes\\eve\\pages\\all\\Newsletter.jsx')
     },
-    XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xob21lcGFnZVxGcmVlU2hpcHBpbmdCYXIuanN4: {
-      id: 'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xob21lcGFnZVxGcmVlU2hpcHBpbmdCYXIuanN4',
+    'XHRoZW1lc1xldmVccGFnZXNcaG9tZXBhZ2VcRnJlZVNoaXBwaW5nQmFyLmpzeA==': {
+      id: 'XHRoZW1lc1xldmVccGFnZXNcaG9tZXBhZ2VcRnJlZVNoaXBwaW5nQmFyLmpzeA==',
       sortOrder: 2,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\themes\\usashipping\\pages\\homepage\\FreeShippingBar.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\themes\\eve\\pages\\homepage\\FreeShippingBar.jsx')
     }
   },
   footer: {
     'XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY21zXHBhZ2VzXGZyb250U3RvcmVcYWxsXEZvb3Rlci5qc3g=': {
       id: 'XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY21zXHBhZ2VzXGZyb250U3RvcmVcYWxsXEZvb3Rlci5qc3g=',
       sortOrder: 10,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\cms\\pages\\frontStore\\all\\Footer.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\cms\\pages\\frontStore\\all\\Footer.jsx')
     }
   },
   head: {
     'XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY21zXHBhZ2VzXGZyb250U3RvcmVcYWxsXEhlYWRUYWdzLmpzeA==': {
       id: 'XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY21zXHBhZ2VzXGZyb250U3RvcmVcYWxsXEhlYWRUYWdzLmpzeA==',
       sortOrder: 5,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\cms\\pages\\frontStore\\all\\HeadTags.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\cms\\pages\\frontStore\\all\\HeadTags.jsx')
     }
   },
   body: {
-    'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xhbGxcTGF5b3V0LmpzeA==': {
-      id: 'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xhbGxcTGF5b3V0LmpzeA==',
+    'XHRoZW1lc1xldmVccGFnZXNcYWxsXExheW91dC5qc3g=': {
+      id: 'XHRoZW1lc1xldmVccGFnZXNcYWxsXExheW91dC5qc3g=',
       sortOrder: 1,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\themes\\usashipping\\pages\\all\\Layout.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\themes\\eve\\pages\\all\\Layout.jsx')
     },
     'XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY21zXHBhZ2VzXGZyb250U3RvcmVcYWxsXE5vdGlmaWNhdGlvbi5qc3g=': {
       id: 'XG5vZGVfbW9kdWxlc1xAZXZlcnNob3BcZXZlcnNob3Bcc3JjXG1vZHVsZXNcY21zXHBhZ2VzXGZyb250U3RvcmVcYWxsXE5vdGlmaWNhdGlvbi5qc3g=',
       sortOrder: 10,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\cms\\pages\\frontStore\\all\\Notification.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\node_modules\\@evershop\\evershop\\src\\modules\\cms\\pages\\frontStore\\all\\Notification.jsx')
     }
   },
   header: {
-    'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xhbGxcTG9nby5qc3g=': {
-      id: 'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xhbGxcTG9nby5qc3g=',
+    XHRoZW1lc1xldmVccGFnZXNcYWxsXExvZ28uanN4: {
+      id: 'XHRoZW1lc1xldmVccGFnZXNcYWxsXExvZ28uanN4',
       sortOrder: 5,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\themes\\usashipping\\pages\\all\\Logo.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\themes\\eve\\pages\\all\\Logo.jsx')
     },
-    'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xhbGxcTWVudS5qc3g=': {
-      id: 'XHRoZW1lc1x1c2FzaGlwcGluZ1xwYWdlc1xhbGxcTWVudS5qc3g=',
+    XHRoZW1lc1xldmVccGFnZXNcYWxsXE1lbnUuanN4: {
+      id: 'XHRoZW1lc1xldmVccGFnZXNcYWxsXE1lbnUuanN4',
       sortOrder: 1,
-      component: require('C:\\Users\\Admin\\source\\repos\\usashipping\\usashipping\\themes\\usashipping\\pages\\all\\Menu.jsx')
+      component: require('C:\\Users\\Admin\\Documents\\repos\\usashipping\\usashipping\\themes\\eve\\pages\\all\\Menu.jsx')
     }
   }
 } 

@@ -1,14 +1,20 @@
 {
-  "name": "usashipping",
-  "version": "0.1.0",
-  "private": true,
+  "name": "evershop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "setup": "evershop install",
+    "build": "evershop build --skip-minify", // Skip the minification process, if you want to minify the code, remove the --skip-minify flag
     "start": "evershop start",
-    "build": "evershop build",
-    "dev": "evershop dev"
+    "user:create": "evershop user:create",
+    "user:changePassword": "evershop user:changePassword"
   },
+  "workspaces": [
+    "extensions/*"
+  ],
+  "author": "EverShop",
+  "license": "ISC",
   "dependencies": {
-    "@evershop/evershop": "1.0.0"
+    "@evershop/evershop": "^1.0.0-rc.8"
   }
 }

@@ -58,10 +58,10 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'usashipping'
+          app-name: 'usashipping-dev'
           slot-name: 'Production'
           package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_72EA93BAA073466D843F88BAABEFCE34 }}
 
-      - name: NPM install
-        run: npm install
+      # - name: NPM install
+      #   run: npm install

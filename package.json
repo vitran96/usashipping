@@ -6,7 +6,10 @@
     "setup": "evershop install",
     "start": "evershop start",
     "build": "evershop build",
-    "dev": "evershop dev"
+    "dev": "evershop dev",
+    "admin:create": "evershop user:create",
+    "admin:change-pass": "evershop user:changePassword",
+    "evershop": "evershop"
   },
   "dependencies": {
     "@evershop/evershop": "1.2.2"

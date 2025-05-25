@@ -1,22 +1,22 @@
 {
     "compilerOptions": {
-        "target": "ES5",
-        "lib": [ "ES5", "DOM" ],
+        "target": "ES2018",
+        "lib": [ "ES2018", "DOM" ],
         "sourceMap": true,
-        "types": [ "cypress", "node"],
+        "types": [ "node" ],
         "module": "commonjs",
         "moduleResolution": "node",
-        // "outDir": "./dist",
-        // "rootDir": "./src",
-        "rootDir": "./cypress",
+        "outDir": "./dist",
+        "rootDir": "./src",
+        // "rootDir": "./cypress",
         "strict": true,
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "preserveValueImports": false
     },
     "include": [
-        // "src/**/*",
-        "cypress/**/*",
+        "src/**/*",
+        // "cypress/**/*",
     ],
     "exclude": [
         "node_modules",

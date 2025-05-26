@@ -1,5 +1,12 @@
 {
   "system": {
-    "theme": "eve"
+    "theme": "eve",
+    "extensions": [
+      {
+        "name": "addToCartOnProducts",
+        "resolve": "extensions/addToCartOnProducts",
+        "enabled": true
+      }
+    ]
   }
 }

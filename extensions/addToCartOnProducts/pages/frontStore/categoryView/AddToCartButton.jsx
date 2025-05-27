@@ -8,7 +8,7 @@ import Area from '@components/common/Area';
 import { Form } from '@components/common/form/Form';
 import { Field } from '@components/common/form/Field';
 import Button from '@components/common/form/Button';
-import './Form.scss';
+import './AddToCartButton.scss';
 import { useAppDispatch, useAppState } from '@components/common/context/app';
 import { _ } from '@evershop/evershop/src/lib/locale/translate';
 import ProductNoThumbnail from '@components/common/ProductNoThumbnail';
@@ -136,27 +136,19 @@ AddToCartButton.defaultProps = {
     error: undefined
 };
 
-// AddToCartButton.propTypes = {
-//     error: PropTypes.string,
-//     loading: PropTypes.bool.isRequired,
-//     stockAvaibility: PropTypes.bool.isRequired
-// };
-
-// AddToCartButton.defaultProps = {
-//     error: undefined
-// };
-
 export default function AddtoCartForm({ areaProps, action }) {
+    const { product } = areaProps;
+    console.log('product', product);
+
     const [loading, setLoading] = useState(false);
     const [toastId, setToastId] = useState();
     const [error, setError] = useState();
     const appContext = useAppState();
     const { setData } = useAppDispatch();
 
-    const { product } = areaProps;
-
-    // console.log('product', product);
+    // NOTE: dynamic for ID
     const formId = `productForm-${product.productId}`;
+    console.log('cart context', appContext.cart);
 
     const onSuccess = (response) => {
         if (!response.error) {
@@ -198,51 +190,27 @@ export default function AddtoCartForm({ areaProps, action }) {
             onError={(e) => setError(e.message)}
             isJSON
         >
-            <div className="addToCartStyle">
-                <input type="hidden" name="sku" value={product.sku} />
-                <AddToCartButton
-                    // stockAvaibility={product.inventory.isInStock}
-                    formId={formId}
-                    // NOTE: stockAvaibility is not work yet
-                    stockAvaibility={true}
-                    loading={loading}
-                    error={error}
-                />
-                {/* <Area
-                    id="productSinglePageForm"
-                    coreComponents={[
-                        {
-                            component: { default: AddToCart },
-                            props: {
-                                stockAvaibility: product.inventory.isInStock,
-                                loading,
-                                error
-                            },
-                            sortOrder: 50,
-                            id: 'productSingleBuyButton'
-                        }
-                    ]}
-                /> */}
-            </div>
+            <input type="hidden" name="sku" value={product.sku} />
+            <AddToCartButton
+                formId={formId}
+                stockAvaibility={product.inventory.isInStock}
+                loading={loading}
+                error={error}
+            />
         </Form>
     );
 }
 
 AddtoCartForm.propTypes = {
     action: PropTypes.string.isRequired,
-    // product: PropTypes.shape({
-    //     inventory: PropTypes.shape({
-    //         isInStock: PropTypes.bool.isRequired
-    //     }).isRequired,
-    //     name: PropTypes.string.isRequired,
-    //     sku: PropTypes.string.isRequired
-    // }).isRequired
+    product: PropTypes.shape({
+        inventory: PropTypes.shape({
+            isInStock: PropTypes.bool.isRequired
+        }).isRequired,
+        name: PropTypes.string.isRequired,
+        sku: PropTypes.string.isRequired
+    }).isRequired
 };
-
-// export const layout = {
-//   areaId: 'productPageMiddleRight',
-//   sortOrder: 45
-// };
 
 export const layout = {
     areaId: 'productListingItem',

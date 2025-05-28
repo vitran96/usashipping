@@ -23,8 +23,7 @@ export default function Products({
       ...product,
       cartQty: cartItem ? cartItem.qty : 0,
       cartItemId: cartItem ? cartItem.cartItemId : null,
-      remoteApi: cartItem ? cartItem.removeApi : null,
-      updateQtyApi: cartItem ? cartItem.updateQtyApi : null
+      cartUuid: cartItem ? cartItem.uuid : null,
     };
   });
 
@@ -104,6 +103,7 @@ export const query = `
     }
     cart {
       items {
+        uuid
         productId
         qty
         cartItemId
@@ -114,6 +114,7 @@ export const query = `
 
 export const fragments = `
   fragment Product on Product {
+    uuid
     productId
     name
     sku

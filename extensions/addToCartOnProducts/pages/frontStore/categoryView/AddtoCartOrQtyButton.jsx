@@ -1,21 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-param-reassign */
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@components/common/form/Button';
 import './AddtoCartOrQtyButton.scss';
 import { _ } from '@evershop/evershop/src/lib/locale/translate';
 import Quantity from './Quantity';
+import { toast } from 'react-toastify';
 
 export default function AddtoCartOrQtyButton({ areaProps, action }) {
     const { product } = areaProps;
-    console.log('product', product);
-    console.log('action', action);
-
-    const [isLoading, setIsLoading] = React.useState(false);
 
     // TODO: handle inStock
-    // TODO: cartQty Update
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [cartQty, setCartQty] = useState(product.cartQty);
+    const [cartUuid, setCartUuid] = useState(product.uuid);
 
     if (product.inventory.isInStock === false) {
         return (
@@ -25,14 +25,64 @@ export default function AddtoCartOrQtyButton({ areaProps, action }) {
         );
     }
 
-    if (product.cartQty > 0) {
+    if (cartQty > 0) {
+        const updateCartQty = async (previousQty, newQty) => {
+            try {
+                setIsLoading(true);
+
+                const response = await fetch(`/api/cart/${cartItemId}/items/${product.productId}`,
+                    {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            action: '', // 'increase' or 'decrease'
+                            qty: newQty
+                        }),
+                        credentials: 'same-origin'
+                    }
+                );
+                const json = await response.json();
+                if (json.error) {
+                    toast.error(json.error.message);
+                    return;
+                } else {
+                    setCartQty(newQty);
+                }
+            } catch (error) {
+                toast.error(error.message);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+        const removeItem = async () => {
+            try {
+                setIsLoading(true);
+                const response = await fetch(`/api/cart/${cartUuid}/items/${product.productId}`, {
+                    method: 'DELETE',
+                    credentials: 'same-origin'
+                });
+
+                const json = await response.json();
+                if (json.error) {
+                    toast.error(json.error.message);
+                } else {
+                    setCartQty(0);
+                    setCartUuid(null);
+                }
+            } catch (error) {
+                toast.error(error.message);
+            } finally {
+                setIsLoading(false);
+            }
+        }
         return (
             <Quantity
-                qty={product.cartQty}
+                qty={cartQty}
                 isLoading={isLoading}
-                setIsLoading={setIsLoading}
-                updateApi={product.updateQtyApi}
-                removeApi={product.removeApi}
+                onChangeQty={(previousQty, newQty) => updateCartQty(previousQty, newQty)}
+                onRemove={() => removeItem()}
             />
         );
     }
@@ -55,12 +105,13 @@ export default function AddtoCartOrQtyButton({ areaProps, action }) {
             const json = await response.json();
 
             if (json.error) {
-                console.error(json.error.message);
+                toast.error(json.error.message);
             } else {
-                // Optionally, you can handle the success case here
-                console.log('Product added to cart successfully');
-                console.log('json', json);
+                setCartQty(1);
+                setCartItemId(json.uuid);
             }
+        } catch (error) {
+            toast.error(error.message);
         } finally {
             setIsLoading(false);
         }
@@ -88,8 +139,7 @@ AddtoCartOrQtyButton.propTypes = {
         sku: PropTypes.string.isRequired,
         cartQty: PropTypes.number.isRequired,
         cartItemId: PropTypes.string,
-        removeApi: PropTypes.string,
-        updateQtyApi: PropTypes.string,
+        cartUuid: PropTypes.string,
     }).isRequired
 };
 

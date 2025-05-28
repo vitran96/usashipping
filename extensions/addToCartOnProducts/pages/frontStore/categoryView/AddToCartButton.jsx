@@ -143,12 +143,16 @@ export default function AddtoCartForm({ areaProps, action }) {
     const [loading, setLoading] = useState(false);
     const [toastId, setToastId] = useState();
     const [error, setError] = useState();
+
     const appContext = useAppState();
     const { setData } = useAppDispatch();
 
+    const { originalCartQty, setOriginalCartQty } = useState(product.cartQty || 0);
+    const { currentCartQty, setCurrentCartQty } = useState(product.cartQty || 0);
+
     // NOTE: dynamic for ID
     const formId = `productForm-${product.productId}`;
-    console.log('cart context', appContext.cart);
+    // console.log('cart context', appContext.cart);
 
     const onSuccess = (response) => {
         if (!response.error) {
@@ -172,8 +176,10 @@ export default function AddtoCartForm({ areaProps, action }) {
                     { closeButton: false }
                 )
             );
+            setOriginalCartQty(currentCartQty);
         } else {
             setError(response.error.message);
+            setCurrentCartQty(originalCartQty);
         }
     };
 
@@ -208,7 +214,8 @@ AddtoCartForm.propTypes = {
             isInStock: PropTypes.bool.isRequired
         }).isRequired,
         name: PropTypes.string.isRequired,
-        sku: PropTypes.string.isRequired
+        sku: PropTypes.string.isRequired,
+        cartQty: PropTypes.number.isRequired,
     }).isRequired
 };
 

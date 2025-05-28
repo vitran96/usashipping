@@ -21,7 +21,10 @@ export default function Products({
 
     return {
       ...product,
-      cartQty: cartItem ? cartItem.qty : 0
+      cartQty: cartItem ? cartItem.qty : 0,
+      cartItemId: cartItem ? cartItem.cartItemId : null,
+      remoteApi: cartItem ? cartItem.removeApi : null,
+      updateQtyApi: cartItem ? cartItem.updateQtyApi : null
     };
   });
 
@@ -103,6 +106,9 @@ export const query = `
       items {
         productId
         qty
+        cartItemId
+        removeApi
+        updateQtyApi
       }}
   }`;
 

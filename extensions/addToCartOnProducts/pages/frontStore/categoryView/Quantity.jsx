@@ -1,50 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useAppDispatch } from '@components/common/context/app';
 
-export default function Quantity({ qty, isLoading, onChangeQty, onRemove }) {
-    const AppContextDispatch = useAppDispatch();
-    const [quantity, setQuantity] = React.useState(qty);
-    const previousQuantity = React.useRef(qty);
+export default function Quantity({ qty: quantity, isLoading, onChangeQty, onRemove }) {
     const [debounceTimer, setDebounceTimer] = React.useState(null);
 
-    const updateQuantity = (newQuantity) => {
-        setQuantity(newQuantity);
+    const updateQuantity = (isIncrease) => {
         if (debounceTimer) {
             clearTimeout(debounceTimer);
         }
         const timer = setTimeout(() => {
-            onChangeQty(previousQuantity, newQuantity);
-            refreshContext();
+            onChangeQty(isIncrease);
         }, 500);
         setDebounceTimer(timer);
     };
 
     const removeItem = () => {
-        setQuantity(0);
         if (debounceTimer) {
             clearTimeout(debounceTimer);
         }
         const timer = setTimeout(() => {
             onRemove();
-            refreshContext();
         }, 500);
         setDebounceTimer(timer);
     }
-
-    const refreshContext = async () => {
-        const url = new URL(window.location.href);
-        url.searchParams.set('ajax', true);
-        await AppContextDispatch.fetchPageData(url);
-        previousQuantity.current = qty;
-    };
 
     return (
         <div className="qty-box grid grid-cols-3 border border-[#ccc]">
             {quantity > 1 && (
                 <button
                     className="flex justify-center items-center"
-                    onClick={() => updateQuantity(Math.max(quantity - 1, 0))}
+                    onClick={() => updateQuantity(false)}
                     disabled={isLoading}
                     type="button"
                 >
@@ -114,7 +99,6 @@ export default function Quantity({ qty, isLoading, onChangeQty, onRemove }) {
                         </svg>
                     )}
                     {!isLoading && (
-                        // trash/bin icon
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             aria-hidden="true"
@@ -122,13 +106,14 @@ export default function Quantity({ qty, isLoading, onChangeQty, onRemove }) {
                             role="presentation"
                             className="icon icon-trash"
                             fill="none"
-                            viewBox="0 0 10 10"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="2"
                         >
                             <path
-                                fillRule="evenodd"
-                                clipRule="evenodd"
-                                d="M1 1.5a.5.5 0 01.5-.5h7a.5.5 0 010 1H8v7a.5.5 0 01-1 0V2H3v6a.5.5 0 01-1 0V2H1.5A.5.5 0 011 1.5zM3 2h4v6H3V2z"
-                                fill="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M19 7l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 7M10 11v6M14 11v6M3 7h18M8 7V4a1 1 0 011-1h6a1 1 0 011 1v3"
                             />
                         </svg>
                     )}
@@ -137,7 +122,7 @@ export default function Quantity({ qty, isLoading, onChangeQty, onRemove }) {
             <input type="text" value={quantity} readOnly />
             <button
                 className="flex justify-center items-center"
-                onClick={() => updateQuantity(quantity + 1)}
+                onClick={() => updateQuantity(true)}
                 disabled={isLoading}
                 type="button"
             >
@@ -185,5 +170,4 @@ export default function Quantity({ qty, isLoading, onChangeQty, onRemove }) {
 
 Quantity.propTypes = {
     qty: PropTypes.number.isRequired,
-    updateApi: PropTypes.string.isRequired
 };

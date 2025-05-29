@@ -22,8 +22,7 @@ export default function Products({
     return {
       ...product,
       cartQty: cartItem ? cartItem.qty : 0,
-      cartItemId: cartItem ? cartItem.cartItemId : null,
-      cartUuid: cartItem ? cartItem.uuid : null,
+      cartItemUuid: cartItem ? cartItem.uuid : null,
     };
   });
 
@@ -37,6 +36,7 @@ export default function Products({
   );
 }
 
+// NOTE: sometime products or product is NULL. Might need more investigation.
 Products.propTypes = {
   products: PropTypes.shape({
     showProducts: PropTypes.number,
@@ -67,7 +67,8 @@ Products.propTypes = {
       items: PropTypes.arrayOf(
         PropTypes.shape({
           productId: PropTypes.number,
-          qty: PropTypes.number
+          qty: PropTypes.number,
+          uuid: PropTypes.string,
         })
       )
     })
@@ -106,9 +107,6 @@ export const query = `
         uuid
         productId
         qty
-        cartItemId
-        removeApi
-        updateQtyApi
       }}
   }`;
 

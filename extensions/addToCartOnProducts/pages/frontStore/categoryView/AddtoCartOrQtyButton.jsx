@@ -6,85 +6,81 @@ import Button from '@components/common/form/Button';
 import './AddtoCartOrQtyButton.scss';
 import { _ } from '@evershop/evershop/src/lib/locale/translate';
 import Quantity from './Quantity';
+import { useAppDispatch } from '@components/common/context/app';
 import { toast } from 'react-toastify';
 
 export default function AddtoCartOrQtyButton({ areaProps, action }) {
     const { product } = areaProps;
 
+    const AppContextDispatch = useAppDispatch();
+
     // TODO: handle inStock
 
     const [isLoading, setIsLoading] = useState(false);
     const [cartQty, setCartQty] = useState(product.cartQty);
-    const [cartUuid, setCartUuid] = useState(product.uuid);
+    const [cartItemUuid, setCartItemUuid] = useState(product.cartItemUuid || null);
 
-    if (product.inventory.isInStock === false) {
-        return (
-            <button className="btn btn-outline btn-disabled">
-                {_('SOLD OUT')}
-            </button>
-        );
-    }
+    const refreshContext = async () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('ajax', true);
+        await AppContextDispatch.fetchPageData(url);
+    };
 
-    if (cartQty > 0) {
-        const updateCartQty = async (previousQty, newQty) => {
-            try {
-                setIsLoading(true);
-
-                const response = await fetch(`/api/cart/${cartItemId}/items/${product.productId}`,
-                    {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            action: '', // 'increase' or 'decrease'
-                            qty: newQty
-                        }),
-                        credentials: 'same-origin'
-                    }
-                );
-                const json = await response.json();
-                if (json.error) {
-                    toast.error(json.error.message);
-                    return;
-                } else {
-                    setCartQty(newQty);
-                }
-            } catch (error) {
-                toast.error(error.message);
-            } finally {
-                setIsLoading(false);
-            }
-        }
-        const removeItem = async () => {
-            try {
-                setIsLoading(true);
-                const response = await fetch(`/api/cart/${cartUuid}/items/${product.productId}`, {
-                    method: 'DELETE',
+    const updateCartQty = async (
+        isIncrease,
+        cartItemUuid
+    ) => {
+        try {
+            setIsLoading(true);
+            const actionStr = isIncrease ? 'increase' : 'decrease';
+            const response = await fetch(`/api/cart/mine/items/${cartItemUuid}`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: actionStr,
+                        qty: 1
+                    }),
                     credentials: 'same-origin'
-                });
-
-                const json = await response.json();
-                if (json.error) {
-                    toast.error(json.error.message);
-                } else {
-                    setCartQty(0);
-                    setCartUuid(null);
                 }
-            } catch (error) {
-                toast.error(error.message);
-            } finally {
-                setIsLoading(false);
+            );
+            const json = await response.json();
+            if (json.error) {
+                toast.error(json.error.message);
+            } else {
+                setCartQty(json.data.item.qty);
             }
+        } catch (error) {
+            toast.error(error.message);
+        } finally {
+            refreshContext();
+            setIsLoading(false);
         }
-        return (
-            <Quantity
-                qty={cartQty}
-                isLoading={isLoading}
-                onChangeQty={(previousQty, newQty) => updateCartQty(previousQty, newQty)}
-                onRemove={() => removeItem()}
-            />
-        );
+    }
+    const removeItem = async (cartItemUuid) => {
+        try {
+            console.log('removeItem', cartItemUuid);
+            setIsLoading(true);
+            const response = await fetch(`/api/cart/mine/items/${cartItemUuid}`, {
+                method: 'DELETE',
+                credentials: 'same-origin'
+            });
+
+            const json = await response.json();
+            if (json.error) {
+                toast.error(json.error.message);
+            } else {
+                setCartQty(0);
+                setCartItemUuid(null);
+            }
+        } catch (error) {
+            toast.error(error.message);
+        } finally {
+            refreshContext();
+            setIsLoading(false);
+        }
     }
 
     const addToCart = async () => {
@@ -108,13 +104,34 @@ export default function AddtoCartOrQtyButton({ areaProps, action }) {
                 toast.error(json.error.message);
             } else {
                 setCartQty(1);
-                setCartItemId(json.uuid);
+                setCartItemUuid(json.data.item.uuid);
             }
         } catch (error) {
             toast.error(error.message);
         } finally {
+            refreshContext();
             setIsLoading(false);
         }
+    }
+
+    if (product.inventory.isInStock === false) {
+        return (
+            <button className="btn btn-outline btn-disabled">
+                {_('SOLD OUT')}
+            </button>
+        );
+    }
+
+    if (cartQty > 0) {
+        
+        return (
+            <Quantity
+                qty={cartQty}
+                isLoading={isLoading}
+                onChangeQty={(isIncrease) => updateCartQty(isIncrease, cartItemUuid)}
+                onRemove={() => removeItem(cartItemUuid)}
+            />
+        );
     }
 
     return (
@@ -138,8 +155,7 @@ AddtoCartOrQtyButton.propTypes = {
         name: PropTypes.string.isRequired,
         sku: PropTypes.string.isRequired,
         cartQty: PropTypes.number.isRequired,
-        cartItemId: PropTypes.string,
-        cartUuid: PropTypes.string,
+        cartItemUuid: PropTypes.string,
     }).isRequired
 };
 

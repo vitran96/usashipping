@@ -170,4 +170,7 @@ export default function Quantity({ qty: quantity, isLoading, onChangeQty, onRemo
 
 Quantity.propTypes = {
     qty: PropTypes.number.isRequired,
+    isLoading: PropTypes.bool,
+    onChangeQty: PropTypes.func.isRequired,
+    onRemove: PropTypes.func.isRequired,
 };

@@ -61,7 +61,6 @@ export default function AddtoCartOrQtyButton({ areaProps, action }) {
     }
     const removeItem = async (cartItemUuid) => {
         try {
-            console.log('removeItem', cartItemUuid);
             setIsLoading(true);
             const response = await fetch(`/api/cart/mine/items/${cartItemUuid}`, {
                 method: 'DELETE',
@@ -123,7 +122,7 @@ export default function AddtoCartOrQtyButton({ areaProps, action }) {
     }
 
     if (cartQty > 0) {
-        
+
         return (
             <Quantity
                 qty={cartQty}
@@ -148,15 +147,17 @@ export default function AddtoCartOrQtyButton({ areaProps, action }) {
 
 AddtoCartOrQtyButton.propTypes = {
     action: PropTypes.string.isRequired,
-    product: PropTypes.shape({
-        inventory: PropTypes.shape({
-            isInStock: PropTypes.bool.isRequired
-        }).isRequired,
-        name: PropTypes.string.isRequired,
-        sku: PropTypes.string.isRequired,
-        cartQty: PropTypes.number.isRequired,
-        cartItemUuid: PropTypes.string,
-    }).isRequired
+    areaProps: PropTypes.shape({
+        product: PropTypes.shape({
+            inventory: PropTypes.shape({
+                isInStock: PropTypes.bool.isRequired
+            }).isRequired,
+            name: PropTypes.string.isRequired,
+            sku: PropTypes.string.isRequired,
+            cartQty: PropTypes.number.isRequired,
+            cartItemUuid: PropTypes.string,
+        }).isRequired
+    })
 };
 
 export const layout = {

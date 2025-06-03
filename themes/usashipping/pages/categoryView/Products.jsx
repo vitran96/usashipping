@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ProductList from '../../components/ProductList';
 import { _ } from '@evershop/evershop/src/lib/locale/translate';
+import ProductList from '../../components/ProductList';
 import mapProductWithCart from '../../common/ProductUtil';
 
 export default function Products({

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ProductList from '../../components/ProductList';
 import { _ } from '@evershop/evershop/src/lib/locale/translate';
+import mapProductWithCart from '../../common/ProductUtil';
 
 export default function Products({
   products: {
@@ -14,17 +15,7 @@ export default function Products({
     return null;
   }
 
-  const productsWithCartInfo = items.map(product => {
-    const cartItem = cart?.items?.find(cartItem =>
-      parseInt(cartItem.productId) === product.productId
-    );
-
-    return {
-      ...product,
-      cartQty: cartItem ? cartItem.qty : 0,
-      cartItemUuid: cartItem ? cartItem.uuid : null,
-    };
-  });
+  const productsWithCartInfo = mapProductWithCart(items, cart);
 
   return (
     <div>
@@ -59,19 +50,25 @@ Products.propTypes = {
           image: PropTypes.shape({
             alt: PropTypes.string,
             listing: PropTypes.string
+          }),
+          uuid: PropTypes.string.isRequired,
+          inventory: PropTypes.shape({
+            isInStock: PropTypes.bool,
+            stockAvailability: PropTypes.number,
+            manageStock: PropTypes.number
           })
         })
       )
     }),
-    cart: PropTypes.shape({
-      items: PropTypes.arrayOf(
-        PropTypes.shape({
-          productId: PropTypes.number,
-          qty: PropTypes.number,
-          uuid: PropTypes.string,
-        })
-      )
-    })
+  }),
+  cart: PropTypes.shape({
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        productId: PropTypes.string,
+        qty: PropTypes.number,
+        uuid: PropTypes.string,
+      })
+    )
   })
 };
 
@@ -107,7 +104,8 @@ export const query = `
         uuid
         productId
         qty
-      }}
+      }
+    }
   }`;
 
 export const fragments = `

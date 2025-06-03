@@ -34,13 +34,7 @@ export default function Layout() {
         <Area id="content" className="" noOuter />
       </main>
       <div className="footer">
-        <div className="page-width grid grid-cols-1 md:grid-cols-1 justify-between">
-          <div className="self-center">
-            <div className="copyright text-center text-textSubdued">
-              <span>© {year} {domainName}. All Rights Reserved.</span>
-            </div>
-          </div>
-        </div>
+        <Area id="footer" className="" noOuter />
       </div>
     </>
   );

@@ -144,7 +144,6 @@ export default function AddtoCartOrQtyButton({ product }) {
 }
 
 AddtoCartOrQtyButton.propTypes = {
-    action: PropTypes.string.isRequired,
     product: PropTypes.shape({
         inventory: PropTypes.shape({
             isInStock: PropTypes.bool.isRequired

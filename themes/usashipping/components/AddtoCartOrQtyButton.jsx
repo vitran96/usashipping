@@ -2,16 +2,14 @@
 /* eslint-disable no-param-reassign */
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import Button from '@components/common/form/Button';
-import './AddtoCartOrQtyButton.scss';
-import { _ } from '@evershop/evershop/src/lib/locale/translate';
-import Quantity from './Quantity';
-import { useAppDispatch } from '@components/common/context/app';
 import { toast } from 'react-toastify';
+import Button from '@components/common/form/Button';
+import { _ } from '@evershop/evershop/src/lib/locale/translate';
+import { useAppDispatch } from '@components/common/context/app';
+import './AddtoCartOrQtyButton.scss';
+import Quantity from './Quantity';
 
-export default function AddtoCartOrQtyButton({ areaProps, action }) {
-    const { product } = areaProps;
-
+export default function AddtoCartOrQtyButton({ product }) {
     const AppContextDispatch = useAppDispatch();
 
     // TODO: handle inStock
@@ -85,7 +83,7 @@ export default function AddtoCartOrQtyButton({ areaProps, action }) {
     const addToCart = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch(action, {
+            const response = await fetch("/api/cart/mine/items", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -147,26 +145,13 @@ export default function AddtoCartOrQtyButton({ areaProps, action }) {
 
 AddtoCartOrQtyButton.propTypes = {
     action: PropTypes.string.isRequired,
-    areaProps: PropTypes.shape({
-        product: PropTypes.shape({
-            inventory: PropTypes.shape({
-                isInStock: PropTypes.bool.isRequired
-            }).isRequired,
-            name: PropTypes.string.isRequired,
-            sku: PropTypes.string.isRequired,
-            cartQty: PropTypes.number.isRequired,
-            cartItemUuid: PropTypes.string,
-        }).isRequired
-    })
+    product: PropTypes.shape({
+        inventory: PropTypes.shape({
+            isInStock: PropTypes.bool.isRequired
+        }).isRequired,
+        name: PropTypes.string.isRequired,
+        sku: PropTypes.string.isRequired,
+        cartQty: PropTypes.number.isRequired,
+        cartItemUuid: PropTypes.string,
+    }).isRequired
 };
-
-export const layout = {
-    areaId: 'productListingItem',
-    sortOrder: 40,
-}
-
-export const query = `
-  query Query {
-    action:url (routeId: "addMineCartItem")
-  }
-`;

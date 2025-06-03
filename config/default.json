@@ -1,13 +1,7 @@
 {
   "system": {
     "theme": "usashipping",
-    "extensions": [
-      {
-        "name": "addToCartOnProducts",
-        "resolve": "extensions/addToCartOnProducts",
-        "enabled": true
-      }
-    ]
+    "extensions": []
   },
   "themeConfig": {
     "copyRight": "© 2025 Qua Xa Ve. All rights reserved."

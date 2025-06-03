@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ProductList from '@components/frontStore/catalog/product/list/List';
+import ProductList from '../../components/ProductList';
 import { _ } from '@evershop/evershop/src/lib/locale/translate';
 
 export default function Products({

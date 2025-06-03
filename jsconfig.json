@@ -3,10 +3,9 @@
         "baseUrl": ".",
         "paths": {
             "@usp-components/*": [
-                "./themes/<Your Theme Folder>/components/*",
-                "./node_modules/@evershop/evershop/src/components/*"
+                "./themes/usashipping/components/*",
             ],
-            "@components-origin/*": [
+            "@eve-components/*": [
                 "./node_modules/@evershop/evershop/src/components/*"
             ],
             "@default-theme/*": [

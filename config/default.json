@@ -8,5 +8,8 @@
         "enabled": true
       }
     ]
+  },
+  "themeConfig": {
+    "copyRight": "© 2025 Qua Xa Ve. All rights reserved."
   }
 }

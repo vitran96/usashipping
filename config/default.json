@@ -4,6 +4,14 @@
     "extensions": []
   },
   "themeConfig": {
+    "headTags": {
+      "links": [
+        {
+          "rel": "icon",
+          "href": "/favicon.ico"
+        }
+      ]
+    },
     "copyRight": "© 2025 Qua Xa Ve. All rights reserved."
   }
 }

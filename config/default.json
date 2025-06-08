@@ -4,6 +4,12 @@
     "extensions": []
   },
   "themeConfig": {
+    "logo": {
+      "alt": "Qua Xa Ve",
+      "src": "/images/logo-full.png",
+      "width": 100,
+      "height": 100
+    },
     "headTags": {
       "links": [
         {

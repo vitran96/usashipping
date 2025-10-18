@@ -27,7 +27,6 @@ Title.propTypes = {
 
 export default function ShoppingCart({ cart, setting }) {
   const { totalQty = 0, items = [] } = cart || {};
-  console.log('items', JSON.stringify(items));
   if (totalQty <= 0) {
     return <Empty />;
   } else {
